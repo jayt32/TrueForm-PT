@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrueForm PT — Referral Flyer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #C8C2B4;
+      display: flex;
+      justify-content: center;
+      padding: 40px 24px 60px;
+      font-family: 'DM Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 8.5 × 11 at 96 dpi = 816 × 1056. Rendered at ~83% → 680 × 880 */
+    .flyer {
+      width: 680px;
+      height: 880px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 12px 56px rgba(0,0,0,0.22), 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    /* ── HEADER ─────────────────────────────────────────── */
+    .header {
+      background: #2A2E22;
+      padding: 0 36px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    .logo-wrap {
+      overflow: hidden;
+      height: 50px;
+      width: 214px;
+    }
+    .logo-wrap img {
+      height: 92px;
+      width: auto;
+      display: block;
+      margin-top: -18px;
+      margin-left: -26px;
+      filter: brightness(0) invert(1);
+      opacity: 0.88;
+    }
+    .header-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .badge-dot {
+      width: 5px; height: 5px;
+      background: #4B5535;
+      border-radius: 50%;
+    }
+    .header-badge span {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8A8A7E;
+    }
+
+    /* ── HERO BAND ──────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      background: #F5F0E8;
+      padding: 32px 36px 28px;
+      gap: 28px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .hero-text .eyebrow {
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #4B5535;
+      margin-bottom: 10px;
+    }
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.85rem;
+      font-weight: 500;
+      color: #1A1A17;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+    .hero-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #4B5535;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+    .hero-text p {
+      font-size: 0.76rem;
+      font-weight: 300;
+      color: #5A5A50;
+      line-height: 1.7;
+      max-width: 340px;
+    }
+    .hero-photo-wrap {
+      position: relative;
+      flex-shrink: 0;
+      padding: 0 10px 10px 0;
+    }
+    .hero-photo-wrap img {
+      width: 116px;
+      height: 148px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: 0; right: 0;
+      width: calc(100% - 10px);
+      height: calc(100% - 10px);
+      border: 1.5px solid #4B5535;
+      z-index: 0;
+    }
+
+    /* ── ACCENT ─────────────────────────────────────────── */
+    .accent {
+      height: 3px;
+      background: linear-gradient(to right, #2A2E22, #4B5535 30%, #8A9668 60%, #4B5535 80%, #2A2E22);
+      flex-shrink: 0;
+    }
+
+    /* ── MAIN CONTENT ───────────────────────────────────── */
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* Left — Services */
+    .services-col {
+      background: #EDE7D9;
+      padding: 26px 28px 26px 36px;
+      border-right: 1px solid #DDD8CE;
+      display: flex;
+      flex-direction: column;
+    }
+    .col-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .col-header-bar {
+      width: 18px; height: 2px;
+      background: #4B5535;
+      flex-shrink: 0;
+    }
+    .col-header h3 {
+      font-size: 0.58rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #4B5535;
+    }
+    .service-item {
+      padding: 11px 0;
+      border-bottom: 1px solid rgba(180,174,162,0.5);
+    }
+    .service-item:last-child { border-bottom: none; }
+    .service-item h4 {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #1A1A17;
+      margin-bottom: 3px;
+      line-height: 1.3;
+    }
+    .service-item p {
+      font-size: 0.67rem;
+      font-weight: 300;
+      color: #6A6A60;
+      line-height: 1.45;
+    }
+
+    /* Right — Ideal Patients */
+    .patients-col {
+      background: #F5F0E8;
+      padding: 26px 28px;
+      display: flex;
+      flex-direction: column;
+    }
+    .patient-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(180,174,162,0.4);
+    }
+    .patient-item:last-child { border-bottom: none; }
+    .patient-icon {
+      width: 20px; height: 20px;
+      background: #2A2E22;
+      border-radius: 50%;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+    .patient-icon svg { display: block; }
+    .patient-item span {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: #2A2A22;
+      line-height: 1.5;
+    }
+
+    /* ── ABOUT STRIP ────────────────────────────────────── */
+    .about-strip {
+      background: #2A2E22;
+      padding: 18px 36px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 22px;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .about-name-block h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: #EDE7D9;
+      white-space: nowrap;
+    }
+    .about-name-block p {
+      font-size: 0.58rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #4B5535;
+      margin-top: 2px;
+    }
+    .about-creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+    }
+    .cred-tag {
+      font-size: 0.63rem;
+      font-weight: 300;
+      color: #8A8A7E;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      white-space: nowrap;
+    }
+    .cred-tag::before {
+      content: '';
+      width: 3px; height: 3px;
+      background: #4B5535;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    .footer {
+      background: #1C1E18;
+      padding: 0 36px;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .footer-brand {
+      font-size: 0.63rem;
+      font-weight: 500;
+      color: #C0BDB0;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+    .footer-brand span {
+      color: #4B5535;
+      margin: 0 6px;
+    }
+    .footer-contacts {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .footer-contact-item svg { flex-shrink: 0; }
+    .footer-contact-item p {
+      font-size: 0.6rem;
+      font-weight: 300;
+      color: #8A8A7E;
+      white-space: nowrap;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .flyer { box-shadow: none; width: 100%; height: 100vh; }
+    }
+  </style>
+</head>
+<body>
+<div class="flyer">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo-wrap">
+      <img src="./website_resources/trueform_logo2.png" alt="TrueForm Physical Therapy">
+    </div>
+    <div class="header-badge">
+      <div class="badge-dot"></div>
+      <span>Concierge Physical Therapy</span>
+      <div class="badge-dot"></div>
+      <span>Tampa, FL</span>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Private Practice · Doctor of Physical Therapy</p>
+      <h1>TrueForm<br>Physical Therapy</h1>
+      <h2>Orthopedic Evaluation &amp; Treatment</h2>
+      <p>One-on-one, residency-trained concierge PT delivered to your home, gym, or workplace. No waiting rooms, no assistants — just focused, expert care.</p>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="./website_resources/alisha_trueform_profpic.jpg" alt="Alisha Trivedi, DPT">
+    </div>
+  </div>
+
+  <!-- ACCENT LINE -->
+  <div class="accent"></div>
+
+  <!-- MAIN CONTENT -->
+  <div class="content">
+
+    <!-- Services -->
+    <div class="services-col">
+      <div class="col-header">
+        <div class="col-header-bar"></div>
+        <h3>What We Treat</h3>
+      </div>
+
+      <div class="service-item">
+        <h4>Post-Operative Rehab</h4>
+        <p>Knee, shoulder, spinal procedures &amp; joint replacement recovery</p>
+      </div>
+      <div class="service-item">
+        <h4>Chronic Pain &amp; Movement Optimization</h4>
+        <p>Long-term pain management &amp; functional restoration</p>
+      </div>
+      <div class="service-item">
+        <h4>Balance &amp; Fall Prevention</h4>
+        <p>Stability training &amp; proprioceptive rehabilitation</p>
+      </div>
+      <div class="service-item">
+        <h4>Return-to-Function Programming</h4>
+        <p>Goal-driven rehab for daily activities &amp; active lifestyle</p>
+      </div>
+    </div>
+
+    <!-- Ideal Patients -->
+    <div class="patients-col">
+      <div class="col-header">
+        <div class="col-header-bar"></div>
+        <h3>Ideal Patients</h3>
+      </div>
+
+      <div class="patient-item">
+        <div class="patient-icon">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><polyline points="1.5,4 3.2,5.8 6.5,2.2" stroke="#8A9668" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span>Post-surgical orthopedic patients</span>
+      </div>
+      <div class="patient-item">
+        <div class="patient-icon">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><polyline points="1.5,4 3.2,5.8 6.5,2.2" stroke="#8A9668" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span>Chronic musculoskeletal pain</span>
+      </div>
+      <div class="patient-item">
+        <div class="patient-icon">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><polyline points="1.5,4 3.2,5.8 6.5,2.2" stroke="#8A9668" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span>Balance &amp; mobility deficits in older adults</span>
+      </div>
+      <div class="patient-item">
+        <div class="patient-icon">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><polyline points="1.5,4 3.2,5.8 6.5,2.2" stroke="#8A9668" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span>Busy professionals needing flexible, on-site care</span>
+      </div>
+      <div class="patient-item">
+        <div class="patient-icon">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><polyline points="1.5,4 3.2,5.8 6.5,2.2" stroke="#8A9668" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span>Patients plateauing in traditional PT settings</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ABOUT STRIP -->
+  <div class="about-strip">
+    <div class="about-name-block">
+      <h4>Alisha Trivedi, DPT</h4>
+      <p>Licensed Physical Therapist · Florida</p>
+    </div>
+    <div class="about-creds">
+      <span class="cred-tag">DPT — Nova Southeastern University</span>
+      <span class="cred-tag">Orthopedic Residency Trained</span>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-brand">
+      TrueForm Physical Therapy<span>·</span>Tampa, FL
+    </div>
+    <div class="footer-contacts">
+      <div class="footer-contact-item">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><rect x="1" y="2.5" width="9" height="6.5" rx="1" stroke="#4B5535" stroke-width="1"/><polyline points="1,3 5.5,6.5 10,3" stroke="#4B5535" stroke-width="1" stroke-linecap="round"/></svg>
+        <p>alisha@trueform-pt.com</p>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><rect x="2.5" y="1" width="6" height="9" rx="1.5" stroke="#4B5535" stroke-width="1"/><circle cx="5.5" cy="8" r="0.6" fill="#4B5535"/></svg>
+        <p>(817) 879-3316</p>
+      </div>
+      <div class="footer-contact-item">
+        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><circle cx="5.5" cy="5.5" r="4" stroke="#4B5535" stroke-width="1"/><ellipse cx="5.5" cy="5.5" rx="1.8" ry="4" stroke="#4B5535" stroke-width="1"/><line x1="1.5" y1="5.5" x2="9.5" y2="5.5" stroke="#4B5535" stroke-width="1"/></svg>
+        <p>trueform-pt.com</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+node_modules/
+temporary screenshots/
+.DS_Store
+.Rhistory
+.claude/
+SYSTEM_OVERVIEW.html
+screenshot.mjs
+serve.mjs
+package.json
+package-lock.json

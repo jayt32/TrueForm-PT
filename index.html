@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrueForm Physical Therapy — Concierge PT in Tampa, FL</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#F5F0E8',
+            'cream-alt': '#EDE7D9',
+            charcoal: '#1A1A17',
+            olive: '#4B5535',
+            'olive-mid': '#6B7355',
+            muted: '#6A6A60',
+            border: '#DDD8CE',
+            footer: '#1C1E18',
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    #services, #areas, #about, #contact { scroll-margin-top: 88px; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      font-family: 'DM Sans', system-ui, sans-serif;
+      background-color: #F5F0E8;
+      color: #1A1A17;
+      margin: 0;
+      -webkit-font-smoothing: antialiased;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+
+    .nav-link {
+      font-size: 0.685rem;
+      font-weight: 500;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #1A1A17;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: color 150ms ease;
+    }
+    .nav-link:hover { color: #4B5535; }
+    .nav-link:focus-visible { outline: 2px solid #4B5535; outline-offset: 3px; }
+
+    .btn-olive {
+      display: inline-block;
+      background-color: #4B5535;
+      color: #F5F0E8;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.715rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.875rem 2.25rem;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background-color 200ms ease, box-shadow 200ms ease, transform 100ms ease;
+    }
+    .btn-olive:hover {
+      background-color: #3D4529;
+      box-shadow: 0 4px 20px rgba(75, 85, 53, 0.22);
+    }
+    .btn-olive:active { transform: translateY(1px); }
+    .btn-olive:focus-visible { outline: 2px solid #4B5535; outline-offset: 3px; }
+
+    .eyebrow {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.67rem;
+      font-weight: 500;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: #4B5535;
+      margin: 0 0 0.75rem;
+    }
+    .section-h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+      color: #1A1A17;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin: 0;
+    }
+
+    .svc-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .svc-item span {
+      font-size: 0.59rem;
+      font-weight: 500;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #1A1A17;
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    .cbar-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(107, 115, 85, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .svc-card-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background-color: #DDD8CE;
+    }
+
+    @media (max-width: 1024px) {
+      .svc-card-grid { grid-template-columns: repeat(3, 1fr); }
+      .ergo-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 768px) {
+      .hero-section { height: auto !important; min-height: 520px !important; background-position: right center !important; }
+      .hero-section > div:first-child { background: linear-gradient(to right, rgba(245,240,232,1) 0%, rgba(245,240,232,0.98) 55%, rgba(245,240,232,0.7) 80%, rgba(245,240,232,0.3) 100%) !important; }
+      .hero-inner { padding: 3rem 1.75rem !important; }
+      .hero-svc-row { gap: 1.25rem !important; }
+      .about-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+      .why-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+      .areas-inner { grid-template-columns: repeat(2,1fr) !important; }
+      .cbar-grid { grid-template-columns: 1fr !important; }
+      .cbar-item-mid, .cbar-item-right { border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+      .cbar-item-left { padding-right: 0 !important; }
+      .cbar-sep { display: none; }
+      .svc-card-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-flex { flex-direction: column !important; gap: 1.75rem !important; }
+    }
+    @media (max-width: 480px) {
+      .nav-links-wrap { display: none; }
+      .svc-card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ──────────────────────────────────────────────────────────────── -->
+  <nav style="position:sticky;top:0;z-index:100;background-color:#F5F0E8;border-bottom:1px solid #DDD8CE;">
+    <div style="max-width:1280px;margin:0 auto;padding:0 2.75rem;display:flex;align-items:center;justify-content:space-between;height:88px;">
+      <a href="#" aria-label="TrueForm Physical Therapy" style="display:block;flex-shrink:0;overflow:hidden;height:84px;width:355px;">
+        <img src="./website_resources/trueform_logo2.png" alt="TrueForm Physical Therapy" style="height:150px;width:auto;display:block;margin-top:-30px;margin-left:-44px;">
+      </a>
+      <div class="nav-links-wrap" style="display:flex;align-items:center;gap:2.25rem;">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#areas" class="nav-link">Areas Served</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+  <section class="hero-section" style="position:relative;height:660px;overflow:hidden;background-image:url('./website_resources/tampa_skyline.png');background-size:cover;background-position:center right;">
+
+    <!-- Cream-to-transparent gradient overlay -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to right, rgba(245,240,232,1) 0%, rgba(245,240,232,0.98) 18%, rgba(245,240,232,0.9) 30%, rgba(245,240,232,0.6) 44%, rgba(245,240,232,0.18) 58%, rgba(245,240,232,0) 70%);pointer-events:none;"></div>
+
+    <!-- Content -->
+    <div class="hero-inner" style="position:relative;z-index:1;height:100%;max-width:1280px;margin:0 auto;padding:0 2.75rem;display:flex;align-items:center;">
+      <div style="max-width:510px;padding-bottom:1.5rem;">
+
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(2.4rem,3.6vw,3.4rem);font-weight:400;line-height:1.1;letter-spacing:-0.025em;color:#1A1A17;margin:0 0 1.1rem;">
+          Concierge<br>Physical Therapy<br>in Tampa
+        </h1>
+
+        <div style="width:36px;height:1.5px;background-color:#4B5535;margin-bottom:1.1rem;"></div>
+
+        <p style="font-size:0.94rem;font-weight:300;line-height:1.78;color:#484840;margin:0 0 1.85rem;">
+          Personalized one-on-one care.<br>
+          On your schedule. In the location that works for you.
+        </p>
+
+        <!-- Services icon row -->
+        <div class="hero-svc-row" style="display:flex;align-items:flex-start;gap:1.65rem;flex-wrap:wrap;margin-bottom:0.65rem;">
+
+          <div class="svc-item">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <rect x="1" y="10" width="3.75" height="6" rx="1.4" stroke="#1A1A17" stroke-width="1.35"/>
+              <rect x="21.25" y="10" width="3.75" height="6" rx="1.4" stroke="#1A1A17" stroke-width="1.35"/>
+              <rect x="5.75" y="7.5" width="3" height="11" rx="1.4" stroke="#1A1A17" stroke-width="1.35"/>
+              <rect x="17.25" y="7.5" width="3" height="11" rx="1.4" stroke="#1A1A17" stroke-width="1.35"/>
+              <line x1="8.75" y1="13" x2="17.25" y2="13" stroke="#1A1A17" stroke-width="1.35" stroke-linecap="round"/>
+            </svg>
+            <span>Gym<br>Sessions</span>
+          </div>
+
+          <div class="svc-item">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="20" height="14.5" rx="2" stroke="#1A1A17" stroke-width="1.35"/>
+              <path d="M9 17.5v4M17 17.5v4M7 21.5h12" stroke="#1A1A17" stroke-width="1.35" stroke-linecap="round"/>
+              <path d="M8 8h10M8 11.5h6" stroke="#1A1A17" stroke-width="1.35" stroke-linecap="round"/>
+            </svg>
+            <span>Office &amp;<br>Ergonomics</span>
+          </div>
+
+          <div class="svc-item">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M5 23V10.5L13 4.5l8 6V23" stroke="#1A1A17" stroke-width="1.35" stroke-linejoin="round"/>
+              <rect x="9.5" y="16" width="4" height="7" rx="0.5" stroke="#1A1A17" stroke-width="1.35"/>
+              <rect x="15" y="13.5" width="3.5" height="3.75" rx="0.5" stroke="#1A1A17" stroke-width="1.35"/>
+              <line x1="3.5" y1="23" x2="22.5" y2="23" stroke="#1A1A17" stroke-width="1.35" stroke-linecap="round"/>
+            </svg>
+            <span>Condo Gym<br>Sessions</span>
+          </div>
+
+          <div class="svc-item">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <circle cx="13" cy="13" r="3.75" stroke="#1A1A17" stroke-width="1.35"/>
+              <path d="M13 3.5V5.5M13 20.5V22.5M3.5 13H1.5M24.5 13H22.5M5.56 5.56l1.41 1.41M19.03 19.03l1.41 1.41M5.56 20.44l1.41-1.41M19.03 6.97l1.41-1.41" stroke="#1A1A17" stroke-width="1.35" stroke-linecap="round"/>
+            </svg>
+            <span>Outdoor<br>Sessions</span>
+          </div>
+
+          <div class="svc-item">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M3.5 13.5L13 5l9.5 8.5" stroke="#1A1A17" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.5 11.25V22a.75.75 0 00.75.75h3.75v-5h4v5h3.75a.75.75 0 00.75-.75V11.25" stroke="#1A1A17" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Select<br>Home Visits*</span>
+          </div>
+
+        </div>
+
+        <p style="font-size:0.63rem;color:#6A6A60;font-style:italic;margin:0;line-height:1.5;">
+          *Home visits available on a case-by-case basis for established clients.
+        </p>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── CTA BAND ──────────────────────────────────────────────────────────── -->
+  <section style="background-color:#2A2E22;padding:3rem 2.75rem;text-align:center;">
+    <div style="max-width:620px;margin:0 auto;">
+      <p style="font-size:0.59rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#6B7355;margin:0 0 1.1rem;">Get Started</p>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.4vw,2.14rem);font-weight:400;color:#EDE7D9;line-height:1.2;letter-spacing:-0.02em;margin:0 0 1.25rem;">Ready to feel your best?</h2>
+      <p style="font-size:0.91rem;font-weight:300;color:#8A8A7E;line-height:1.85;margin:0 0 2.75rem;">Concierge physical therapy on your schedule and at your location, with no waiting rooms and no hand-offs. Reach out to plan your first session.</p>
+      <div style="display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;">
+        <button onclick="openContactModal()" style="display:inline-block;background-color:#EDE7D9;color:#2A2E22;font-family:'DM Sans',sans-serif;font-size:0.715rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:0.875rem 2.25rem;border:none;cursor:pointer;transition:background-color 200ms ease,box-shadow 200ms ease;" onmouseover="this.style.backgroundColor='#F5F0E8'" onmouseout="this.style.backgroundColor='#EDE7D9'">Send a Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ──────────────────────────────────────────────────────────── -->
+  <section id="services" style="background-color:#F5F0E8;padding:6.5rem 2.75rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <div style="margin-bottom:3.5rem;">
+        <p class="eyebrow">What We Offer</p>
+        <h2 class="section-h2" style="font-size:clamp(1.9rem,2.8vw,2.6rem);max-width:380px;">Care that comes<br>to you</h2>
+      </div>
+
+      <div class="svc-card-grid">
+
+        <div style="background-color:#F5F0E8;padding:2.5rem 2rem;">
+          <div style="margin-bottom:1.5rem;">
+            <svg width="33" height="33" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <rect x="1" y="10" width="3.75" height="6" rx="1.4" stroke="#4B5535" stroke-width="1.3"/>
+              <rect x="21.25" y="10" width="3.75" height="6" rx="1.4" stroke="#4B5535" stroke-width="1.3"/>
+              <rect x="5.75" y="7.5" width="3" height="11" rx="1.4" stroke="#4B5535" stroke-width="1.3"/>
+              <rect x="17.25" y="7.5" width="3" height="11" rx="1.4" stroke="#4B5535" stroke-width="1.3"/>
+              <line x1="8.75" y1="13" x2="17.25" y2="13" stroke="#4B5535" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.6rem;line-height:1.3;">Gym Sessions</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">We come to your gym. Sessions are built around the equipment you already have access to.</p>
+        </div>
+
+        <div style="background-color:#F5F0E8;padding:2.5rem 2rem;">
+          <div style="margin-bottom:1.5rem;">
+            <svg width="33" height="33" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="20" height="14.5" rx="2" stroke="#4B5535" stroke-width="1.3"/>
+              <path d="M9 17.5v4M17 17.5v4M7 21.5h12" stroke="#4B5535" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M8 8h10M8 11.5h6" stroke="#4B5535" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.6rem;line-height:1.3;">Office &amp; Ergonomics</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">Workplace assessments and targeted PT to address posture, desk setup, and work-related pain.</p>
+        </div>
+
+        <div style="background-color:#F5F0E8;padding:2.5rem 2rem;">
+          <div style="margin-bottom:1.5rem;">
+            <svg width="33" height="33" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M5 23V10.5L13 4.5l8 6V23" stroke="#4B5535" stroke-width="1.3" stroke-linejoin="round"/>
+              <rect x="9.5" y="16" width="4" height="7" rx="0.5" stroke="#4B5535" stroke-width="1.3"/>
+              <rect x="15" y="13.5" width="3.5" height="3.75" rx="0.5" stroke="#4B5535" stroke-width="1.3"/>
+              <line x1="3.5" y1="23" x2="22.5" y2="23" stroke="#4B5535" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.6rem;line-height:1.3;">Condo Gym Sessions</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">Make the most of your building's fitness center with guided PT tailored to available equipment.</p>
+        </div>
+
+        <div style="background-color:#F5F0E8;padding:2.5rem 2rem;">
+          <div style="margin-bottom:1.5rem;">
+            <svg width="33" height="33" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <circle cx="13" cy="13" r="3.75" stroke="#4B5535" stroke-width="1.3"/>
+              <path d="M13 3.5V5.5M13 20.5V22.5M3.5 13H1.5M24.5 13H22.5M5.56 5.56l1.41 1.41M19.03 19.03l1.41 1.41M5.56 20.44l1.41-1.41M19.03 6.97l1.41-1.41" stroke="#4B5535" stroke-width="1.3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.6rem;line-height:1.3;">Outdoor Sessions</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">Park-based or trail-side sessions combining fresh air with purposeful, guided movement.</p>
+        </div>
+
+        <div style="background-color:#F5F0E8;padding:2.5rem 2rem;">
+          <div style="margin-bottom:1.5rem;">
+            <svg width="33" height="33" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+              <path d="M3.5 13.5L13 5l9.5 8.5" stroke="#4B5535" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M6.5 11.25V22a.75.75 0 00.75.75h3.75v-5h4v5h3.75a.75.75 0 00.75-.75V11.25" stroke="#4B5535" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.6rem;line-height:1.3;">Select Home Visits</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">For established clients, in-home sessions available on a case-by-case basis for maximum convenience.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT WE TREAT ────────────────────────────────────────────────────── -->
+  <section style="background-color:#EDE7D9;padding:6.5rem 2.75rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+
+      <div style="margin-bottom:3.5rem;">
+        <p class="eyebrow">Conditions &amp; Focus Areas</p>
+        <h2 class="section-h2" style="font-size:clamp(1.9rem,2.8vw,2.6rem);max-width:420px;">What we treat</h2>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid #DDD8CE;">
+
+        <div style="padding:2rem 2.25rem;border-right:1px solid #DDD8CE;border-bottom:1px solid #DDD8CE;">
+          <div style="width:28px;height:1.5px;background:#4B5535;margin-bottom:1.1rem;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.5rem;line-height:1.3;">Post-Operative Rehab</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">Structured recovery following orthopedic surgeries — knee, shoulder, spinal procedures, and joint replacements. Goal-driven progressions from early mobility to full return to function.</p>
+        </div>
+
+        <div style="padding:2rem 2.25rem;border-bottom:1px solid #DDD8CE;">
+          <div style="width:28px;height:1.5px;background:#4B5535;margin-bottom:1.1rem;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.5rem;line-height:1.3;">Chronic Pain &amp; Movement Optimization</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">Addressing persistent musculoskeletal pain through targeted therapy, movement retraining, and strategies that restore confidence in daily activity.</p>
+        </div>
+
+        <div style="padding:2rem 2.25rem;border-right:1px solid #DDD8CE;border-bottom:1px solid #DDD8CE;">
+          <div style="width:28px;height:1.5px;background:#4B5535;margin-bottom:1.1rem;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.5rem;line-height:1.3;">Balance &amp; Fall Prevention</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">Stability training, proprioceptive rehabilitation, and individualized programming for adults looking to improve confidence, reduce fall risk, and stay active.</p>
+        </div>
+
+        <div style="padding:2rem 2.25rem;border-right:1px solid #DDD8CE;">
+          <div>
+            <div style="width:28px;height:1.5px;background:#4B5535;margin-bottom:1.1rem;"></div>
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.5rem;line-height:1.3;">Return-to-Function Programming</h3>
+            <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.76;margin:0;">For patients whose recovery has stalled or who need a more personalized approach. Sessions built around your specific goals — whether that's returning to work, sport, or everyday life.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY TRUEFORM ──────────────────────────────────────────────────────── -->
+  <section style="background-color:#EDE7D9;padding:6rem 2.75rem;">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="text-align:center;margin-bottom:4rem;">
+        <p class="eyebrow">The TrueForm Difference</p>
+        <h2 class="section-h2" style="font-size:clamp(1.75rem,2.5vw,2.35rem);margin:0 auto;max-width:420px;">Why patients choose concierge PT</h2>
+      </div>
+      <div class="why-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:3.5rem;">
+        <div>
+          <div style="width:34px;height:1.5px;background-color:#4B5535;margin-bottom:1.2rem;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.55rem;">One-on-one, always</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.8;margin:0;">Every session is run solely by Alisha. No aides, no hand-offs. Your care is undivided from start to finish.</p>
+        </div>
+        <div>
+          <div style="width:34px;height:1.5px;background-color:#4B5535;margin-bottom:1.2rem;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.55rem;">No clinic, no waiting</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.8;margin:0;">Sessions happen at your gym, office, condo, or outdoors. Wherever fits your schedule and life.</p>
+        </div>
+        <div>
+          <div style="width:34px;height:1.5px;background-color:#4B5535;margin-bottom:1.2rem;"></div>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.04rem;font-weight:500;color:#1A1A17;margin:0 0 0.55rem;">Expert from day one</h3>
+          <p style="font-size:0.83rem;font-weight:300;color:#6A6A60;line-height:1.8;margin:0;">Residency-trained in orthopedics with outpatient clinical experience across a wide range of conditions. That depth shows up in every session.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── AREAS SERVED ──────────────────────────────────────────────────────── -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <section id="areas" style="background-color:#F5F0E8;padding:6rem 2.75rem;">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+
+      <!-- Left: list -->
+      <div>
+        <p class="eyebrow">Coverage</p>
+        <h2 class="section-h2" style="font-size:clamp(1.75rem,2.4vw,2.2rem);margin-bottom:1.5rem;">Areas Served</h2>
+        <p style="font-size:0.88rem;font-weight:300;line-height:1.8;color:#484840;margin:0 0 2rem;">Currently serving neighborhoods in and around Tampa. Sessions come to you at your home, gym, condo, or office.</p>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid #DDD8CE;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:500;color:#1A1A17;">Downtown Tampa</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid #DDD8CE;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:500;color:#1A1A17;">Channelside</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid #DDD8CE;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:500;color:#1A1A17;">Hyde Park</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid #DDD8CE;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:500;color:#1A1A17;">South Tampa</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid #DDD8CE;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:500;color:#1A1A17;">Harbour Island</span>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0;">
+          <div style="display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid #DDD8CE;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:500;color:#1A1A17;">Wesley Chapel</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid #DDD8CE;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:500;color:#1A1A17;">New Tampa</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:0.85rem;padding:0.75rem 0;border-bottom:1px solid #DDD8CE;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;"></div>
+            <span style="font-size:0.88rem;font-weight:500;color:#1A1A17;">Westchase</span>
+          </div>
+        </div>
+        <p style="margin-top:1.5rem;font-size:0.74rem;font-weight:300;color:#8A8A80;font-style:italic;margin-bottom:0;">Not on the list? Reach out and we'll see what's possible.</p>
+      </div>
+
+      <!-- Right: map -->
+      <div style="isolation:isolate;">
+        <div id="coverage-map" style="width:100%;height:420px;border:1px solid #DDD8CE;"></div>
+      </div>
+
+    </div>
+  </section>
+  <script>
+    (function() {
+      var map = L.map('coverage-map', { zoomControl: true, scrollWheelZoom: false }).setView([27.936, -82.486], 12);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        maxZoom: 19
+      }).addTo(map);
+      L.polygon([
+        [27.9443094, -82.5398662],
+        [27.9270946, -82.5335143],
+        [27.9180323, -82.5360036],
+        [27.9074531, -82.5340297],
+        [27.9077565, -82.4878528],
+        [27.9134448, -82.4910285],
+        [27.9191331, -82.4897411],
+        [27.9284614, -82.4740354],
+        [27.9325563, -82.4682843],
+        [27.9355516, -82.4659665],
+        [27.9362719, -82.4631765],
+        [27.9339207, -82.461932 ],
+        [27.9305838, -82.462447 ],
+        [27.9240616, -82.4630479],
+        [27.9076048, -82.4633052],
+        [27.9083636, -82.45292  ],
+        [27.9130658, -82.4437358],
+        [27.9256553, -82.4481991],
+        [27.9339583, -82.4472122],
+        [27.9401381, -82.445882 ],
+        [27.9435313, -82.4431139],
+        [27.9475311, -82.442749 ],
+        [27.9543176, -82.4432209],
+        [27.9547725, -82.4361827],
+        [27.9641732, -82.4361827],
+        [27.9641732, -82.4519756],
+        [27.9567437, -82.4557521],
+        [27.9564404, -82.5046756],
+        [27.9443094, -82.5398662]
+      ], {
+        color: '#4B5535',
+        fillColor: '#4B5535',
+        fillOpacity: 0.13,
+        weight: 1.5,
+        opacity: 0.55
+      }).addTo(map);
+
+    })();
+  </script>
+  <style>
+    .trueform-tooltip {
+      background: #2A2E22;
+      color: #EDE7D9;
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      padding: 4px 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+    .trueform-tooltip::before { display: none; }
+    .leaflet-control-attribution { font-size: 9px !important; }
+  </style>
+
+  <!-- ── ABOUT ─────────────────────────────────────────────────────────────── -->
+  <section id="about" style="background-color:#EDE7D9;padding:4.5rem 2.75rem;">
+    <div class="about-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:5fr 8fr;gap:5rem;align-items:center;">
+
+      <!-- Photo + frame -->
+      <div style="position:relative;padding:0 1.25rem 1.25rem 0;">
+        <img
+          src="./website_resources/alisha_trueform_profpic.jpg"
+          alt="Alisha Trivedi, DPT"
+          style="width:100%;max-height:520px;display:block;position:relative;z-index:1;object-fit:cover;object-position:center top;"
+        >
+        <div style="position:absolute;bottom:0;right:0;width:calc(100% - 1.25rem);height:calc(100% - 1.25rem);border:1.5px solid #4B5535;z-index:0;pointer-events:none;"></div>
+      </div>
+
+      <!-- Bio -->
+      <div>
+        <p class="eyebrow">Meet Your Therapist</p>
+        <h2 class="section-h2" style="font-size:clamp(1.75rem,2.4vw,2.35rem);margin-bottom:0.25rem;">Alisha Trivedi</h2>
+        <p style="font-size:0.86rem;font-weight:400;color:#4B5535;letter-spacing:0.07em;margin:0 0 1.75rem;">Doctor of Physical Therapy</p>
+
+        <p style="font-size:0.91rem;font-weight:300;line-height:1.85;color:#383830;margin:0 0 1.25rem;">
+          I earned my DPT from Nova Southeastern and went on to practice at Good Shepherd Penn Partners, an outpatient clinic in affiliation with Penn Medicine. There I worked alongside experienced clinicians treating a wide range of orthopedic and musculoskeletal conditions — post-operative rehab, chronic pain, mobility limitations, and day-to-day functional impairments — with a consistent focus on reducing pain, restoring movement, and helping patients get back to what matters to them.
+        </p>
+        <p style="font-size:0.91rem;font-weight:300;line-height:1.85;color:#383830;margin:0 0 2rem;">
+          After completing my orthopedic residency at Arcadia University, I made my way to Tampa and started TrueForm to practice the way I've always believed PT should be done: unhurried, one-on-one, and centered around you.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:0.7rem;margin-bottom:0;">
+          <div style="display:flex;align-items:flex-start;gap:0.85rem;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div>
+            <span style="font-size:0.83rem;font-weight:400;color:#383830;line-height:1.55;">Doctor of Physical Therapy (DPT) — Nova Southeastern University</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.85rem;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div>
+            <span style="font-size:0.83rem;font-weight:400;color:#383830;line-height:1.55;">Clinical experience at Good Shepherd Penn Partners — Penn Medicine affiliate</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.85rem;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div>
+            <span style="font-size:0.83rem;font-weight:400;color:#383830;line-height:1.55;">Ortho Residency — Arcadia University</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.85rem;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div>
+            <span style="font-size:0.83rem;font-weight:400;color:#383830;line-height:1.55;">Specialized in orthopedic and musculoskeletal conditions, post-op rehab, chronic pain, and functional recovery</span>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:0.85rem;">
+            <div style="width:5px;height:5px;background-color:#4B5535;border-radius:50%;flex-shrink:0;margin-top:0.5rem;"></div>
+            <span style="font-size:0.83rem;font-weight:400;color:#383830;line-height:1.55;">Licensed Physical Therapist — State of Florida</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────────────────── -->
+  <footer id="contact" style="background-color:#2A2E22;padding:3.75rem 2.75rem 3rem;">
+    <div class="footer-flex" style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:2.5rem;">
+
+      <div>
+        <div style="overflow:hidden;height:60px;width:252px;margin-bottom:0.85rem;">
+          <img src="./website_resources/trueform_logo2.png" alt="TrueForm Physical Therapy" style="height:110px;width:auto;display:block;margin-top:-22px;margin-left:-32px;filter:brightness(0) invert(1);opacity:0.75;">
+        </div>
+        <p style="font-size:0.71rem;font-weight:300;color:#C0BDB0;line-height:1.65;margin:0;">Concierge Physical Therapy<br>Tampa, Florida</p>
+      </div>
+
+      <div style="display:flex;gap:2.25rem;flex-wrap:wrap;">
+        <a href="#services" style="font-size:0.67rem;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;color:#A0A090;text-decoration:none;transition:color 150ms ease;" onmouseover="this.style.color='#D4CABB'" onmouseout="this.style.color='#A0A090'">Services</a>
+        <a href="#areas" style="font-size:0.67rem;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;color:#A0A090;text-decoration:none;transition:color 150ms ease;" onmouseover="this.style.color='#D4CABB'" onmouseout="this.style.color='#A0A090'">Areas Served</a>
+        <a href="#about" style="font-size:0.67rem;font-weight:400;letter-spacing:0.13em;text-transform:uppercase;color:#A0A090;text-decoration:none;transition:color 150ms ease;" onmouseover="this.style.color='#D4CABB'" onmouseout="this.style.color='#A0A090'">About</a>
+      </div>
+
+      <div>
+        <button onclick="openContactModal()" style="background:none;border:1px solid rgba(200,194,180,0.35);color:#C0BDB0;font-family:'DM Sans',sans-serif;font-size:0.67rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;padding:0.65rem 1.5rem;cursor:pointer;transition:border-color 150ms ease,color 150ms ease;" onmouseover="this.style.borderColor='rgba(200,194,180,0.7)';this.style.color='#EDE7D9'" onmouseout="this.style.borderColor='rgba(200,194,180,0.35)';this.style.color='#C0BDB0'">Send a Message</button>
+      </div>
+
+    </div>
+    <div style="max-width:1100px;margin:2.5rem auto 0;border-top:1px solid rgba(255,255,255,0.12);padding-top:1.5rem;">
+      <p style="font-size:0.67rem;font-weight:300;color:#808078;margin:0;">© 2025 TrueForm Physical Therapy. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <!-- ── CONTACT MODAL ─────────────────────────────────────────────────────── -->
+  <div id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"
+    style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(26,26,23,0.72);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:1.5rem;"
+    onclick="if(event.target===this)closeContactModal()">
+
+    <div style="background:#F5F0E8;max-width:520px;width:100%;padding:3rem 2.75rem 2.5rem;position:relative;box-shadow:0 32px 80px rgba(0,0,0,0.28),0 8px 24px rgba(0,0,0,0.14);">
+
+      <!-- Close -->
+      <button onclick="closeContactModal()" aria-label="Close" style="position:absolute;top:1.25rem;right:1.25rem;background:none;border:none;cursor:pointer;color:#6A6A60;padding:4px;line-height:1;transition:color 150ms ease;" onmouseover="this.style.color='#1A1A17'" onmouseout="this.style.color='#6A6A60'">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><line x1="2" y1="2" x2="16" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="2" x2="2" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+
+      <!-- Form content -->
+      <div id="form-content">
+        <p style="font-size:0.59rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#6B7355;margin:0 0 0.75rem;">Get in Touch</p>
+        <h2 id="modal-title" style="font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:400;color:#1A1A17;letter-spacing:-0.02em;margin:0 0 0.5rem;">Let's talk about your care</h2>
+        <p style="font-size:0.875rem;font-weight:300;color:#6A6A60;line-height:1.7;margin:0 0 2rem;">Fill out the form below and Alisha will be in touch within one business day.</p>
+
+        <form id="contact-form" onsubmit="submitContactForm(event)" novalidate>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+            <div>
+              <label for="cf-name" style="display:block;font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#4B5535;margin-bottom:0.4rem;">Name <span aria-hidden="true" style="color:#B05C4A;">*</span></label>
+              <input id="cf-name" type="text" required autocomplete="name" placeholder="Your name"
+                style="width:100%;padding:0.75rem 1rem;background:#EDE7D9;border:1px solid #DDD8CE;font-family:'DM Sans',sans-serif;font-size:0.875rem;color:#1A1A17;outline:none;transition:border-color 150ms ease;"
+                onfocus="this.style.borderColor='#4B5535'" onblur="this.style.borderColor='#DDD8CE'">
+            </div>
+            <div>
+              <label for="cf-email" style="display:block;font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#4B5535;margin-bottom:0.4rem;">Email <span aria-hidden="true" style="color:#B05C4A;">*</span></label>
+              <input id="cf-email" type="email" required autocomplete="email" placeholder="you@email.com"
+                style="width:100%;padding:0.75rem 1rem;background:#EDE7D9;border:1px solid #DDD8CE;font-family:'DM Sans',sans-serif;font-size:0.875rem;color:#1A1A17;outline:none;transition:border-color 150ms ease;"
+                onfocus="this.style.borderColor='#4B5535'" onblur="this.style.borderColor='#DDD8CE'">
+            </div>
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <label for="cf-phone" style="display:block;font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#4B5535;margin-bottom:0.4rem;">Phone <span style="font-weight:300;letter-spacing:0;text-transform:none;color:#6A6A60;">(optional)</span></label>
+            <input id="cf-phone" type="tel" autocomplete="tel" placeholder="(813) 000-0000"
+              style="width:100%;padding:0.75rem 1rem;background:#EDE7D9;border:1px solid #DDD8CE;font-family:'DM Sans',sans-serif;font-size:0.875rem;color:#1A1A17;outline:none;transition:border-color 150ms ease;"
+              onfocus="this.style.borderColor='#4B5535'" onblur="this.style.borderColor='#DDD8CE'">
+          </div>
+
+          <div style="margin-bottom:1.75rem;">
+            <label for="cf-message" style="display:block;font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:#4B5535;margin-bottom:0.4rem;">Message <span aria-hidden="true" style="color:#B05C4A;">*</span></label>
+            <textarea id="cf-message" required rows="4" placeholder="Tell Alisha a bit about what you're dealing with and what you're hoping to work on."
+              style="width:100%;padding:0.75rem 1rem;background:#EDE7D9;border:1px solid #DDD8CE;font-family:'DM Sans',sans-serif;font-size:0.875rem;color:#1A1A17;outline:none;resize:vertical;line-height:1.6;transition:border-color 150ms ease;"
+              onfocus="this.style.borderColor='#4B5535'" onblur="this.style.borderColor='#DDD8CE'"></textarea>
+          </div>
+
+          <div id="form-error" style="display:none;font-size:0.8rem;color:#B05C4A;margin-bottom:1rem;">Something went wrong. Please try again or email <a href="mailto:alisha@trueform-pt.com" style="color:#B05C4A;">alisha@trueform-pt.com</a> directly.</div>
+
+          <button id="contact-submit" type="submit"
+            style="width:100%;background-color:#2A2E22;color:#EDE7D9;font-family:'DM Sans',sans-serif;font-size:0.715rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;padding:1rem;border:none;cursor:pointer;transition:background-color 200ms ease;"
+            onmouseover="if(!this.disabled)this.style.backgroundColor='#3A3F30'" onmouseout="this.style.backgroundColor='#2A2E22'">Send Message</button>
+
+          <p style="font-size:0.7rem;color:#6A6A60;text-align:center;margin:0.9rem 0 0;line-height:1.5;"><span style="color:#B05C4A;">*</span> Required fields</p>
+        </form>
+      </div>
+
+      <!-- Success state -->
+      <div id="form-success" style="display:none;text-align:center;padding:1rem 0;">
+        <div style="width:52px;height:52px;background:#4B5535;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><polyline points="4,11 9,16 18,6" stroke="#EDE7D9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:400;color:#1A1A17;margin:0 0 2rem;">Message received.</h3>
+        <button onclick="closeContactModal()" style="background:none;border:1px solid #DDD8CE;color:#6A6A60;font-family:'DM Sans',sans-serif;font-size:0.7rem;font-weight:500;letter-spacing:0.13em;text-transform:uppercase;padding:0.7rem 1.75rem;cursor:pointer;transition:border-color 150ms ease,color 150ms ease;" onmouseover="this.style.borderColor='#4B5535';this.style.color='#2A2E22'" onmouseout="this.style.borderColor='#DDD8CE';this.style.color='#6A6A60'">Close</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function openContactModal() {
+      document.getElementById('contact-modal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => document.getElementById('cf-name').focus(), 50);
+    }
+
+    function closeContactModal() {
+      document.getElementById('contact-modal').style.display = 'none';
+      document.body.style.overflow = '';
+      document.getElementById('contact-form').reset();
+      document.getElementById('form-content').style.display = 'block';
+      document.getElementById('form-success').style.display = 'none';
+      document.getElementById('form-error').style.display = 'none';
+      const btn = document.getElementById('contact-submit');
+      btn.disabled = false;
+      btn.textContent = 'Send Message';
+      btn.style.opacity = '1';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeContactModal();
+    });
+
+    async function submitContactForm(event) {
+      event.preventDefault();
+      const name = document.getElementById('cf-name').value.trim();
+      const email = document.getElementById('cf-email').value.trim();
+      const phone = document.getElementById('cf-phone').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+      if (!name || !email || !message) return;
+
+      const btn = document.getElementById('contact-submit');
+      const errorEl = document.getElementById('form-error');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      btn.style.opacity = '0.7';
+      errorEl.style.display = 'none';
+
+      try {
+        const res = await fetch('https://thrjdvkevrmajzclfxht.supabase.co/functions/v1/notify-inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone: phone || null, message }),
+        });
+        if (!res.ok) throw new Error('Failed');
+        document.getElementById('form-content').style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Send Message';
+        btn.style.opacity = '1';
+        errorEl.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
