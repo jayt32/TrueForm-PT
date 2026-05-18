@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TrueForm Physical Therapy — Concierge PT in Tampa, FL</title>
+
+  <!-- Link preview (Open Graph) -->
+  <meta property="og:title" content="TrueForm Physical Therapy">
+  <meta property="og:description" content="Concierge physical therapy in Tampa, FL — one-on-one care delivered to your home, gym, or office.">
+  <meta property="og:image" content="https://trueform-pt.com/website_resources/og-image.png">
+  <meta property="og:url" content="https://trueform-pt.com">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://trueform-pt.com/website_resources/og-image.png">
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -137,11 +146,11 @@
       .ergo-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 768px) {
-      .hero-section { height: auto !important; min-height: 520px !important; background-position: right center !important; }
+      .hero-section { height: auto !important; min-height: 480px !important; background-position: right center !important; }
       .hero-section > div:first-child { background: linear-gradient(to right, rgba(245,240,232,1) 0%, rgba(245,240,232,0.98) 55%, rgba(245,240,232,0.7) 80%, rgba(245,240,232,0.3) 100%) !important; }
-      .hero-inner { padding: 3rem 1.75rem !important; }
+      .hero-inner { padding: 2.5rem 1.5rem !important; }
       .hero-svc-row { gap: 1.25rem !important; }
-      .about-grid { grid-template-columns: 1fr !important; gap: 3rem !important; }
+      .about-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
       .why-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
       .areas-inner { grid-template-columns: repeat(2,1fr) !important; }
       .cbar-grid { grid-template-columns: 1fr !important; }
@@ -150,10 +159,24 @@
       .cbar-sep { display: none; }
       .svc-card-grid { grid-template-columns: repeat(2, 1fr); }
       .footer-flex { flex-direction: column !important; gap: 1.75rem !important; }
+      /* Nav logo */
+      .nav-logo-wrap { width: 240px !important; height: 60px !important; flex-shrink: 1 !important; }
+      .nav-logo-wrap img { height: 120px !important; margin-top: -22px !important; margin-left: -32px !important; }
+      /* Areas section - stack map below list */
+      .areas-two-col { grid-template-columns: 1fr !important; gap: 2rem !important; }
+      #coverage-map { height: 280px !important; }
+      /* What We Treat - single column */
+      .treat-grid { grid-template-columns: 1fr !important; }
+      .treat-grid > div { border-right: none !important; border-bottom: 1px solid #DDD8CE !important; }
+      /* Section horizontal padding */
+      .mob-pad { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
     }
     @media (max-width: 480px) {
       .nav-links-wrap { display: none; }
       .svc-card-grid { grid-template-columns: 1fr; }
+      .nav-logo-wrap { width: 200px !important; height: 52px !important; }
+      .nav-logo-wrap img { height: 100px !important; margin-top: -18px !important; margin-left: -26px !important; }
+      #coverage-map { height: 240px !important; }
     }
   </style>
 </head>
@@ -161,8 +184,8 @@
 
   <!-- ── NAV ──────────────────────────────────────────────────────────────── -->
   <nav style="position:sticky;top:0;z-index:100;background-color:#F5F0E8;border-bottom:1px solid #DDD8CE;">
-    <div style="max-width:1280px;margin:0 auto;padding:0 2.75rem;display:flex;align-items:center;justify-content:space-between;height:88px;">
-      <a href="#" aria-label="TrueForm Physical Therapy" style="display:block;flex-shrink:0;overflow:hidden;height:84px;width:355px;">
+    <div class="nav-inner mob-pad" style="max-width:1280px;margin:0 auto;padding:0 2.75rem;display:flex;align-items:center;justify-content:space-between;height:88px;">
+      <a href="#" aria-label="TrueForm Physical Therapy" class="nav-logo-wrap" style="display:block;flex-shrink:0;overflow:hidden;height:84px;width:355px;">
         <img src="./website_resources/trueform_logo2.png" alt="TrueForm Physical Therapy" style="height:150px;width:auto;display:block;margin-top:-30px;margin-left:-44px;">
       </a>
       <div class="nav-links-wrap" style="display:flex;align-items:center;gap:2.25rem;">
@@ -256,7 +279,7 @@
   </section>
 
   <!-- ── CTA BAND ──────────────────────────────────────────────────────────── -->
-  <section style="background-color:#2A2E22;padding:3rem 2.75rem;text-align:center;">
+  <section class="mob-pad" style="background-color:#2A2E22;padding:3rem 2.75rem;text-align:center;">
     <div style="max-width:620px;margin:0 auto;">
       <p style="font-size:0.59rem;font-weight:500;letter-spacing:0.2em;text-transform:uppercase;color:#6B7355;margin:0 0 1.1rem;">Get Started</p>
       <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.4vw,2.14rem);font-weight:400;color:#EDE7D9;line-height:1.2;letter-spacing:-0.02em;margin:0 0 1.25rem;">Ready to feel your best?</h2>
@@ -268,7 +291,7 @@
   </section>
 
   <!-- ── SERVICES ──────────────────────────────────────────────────────────── -->
-  <section id="services" style="background-color:#F5F0E8;padding:6.5rem 2.75rem;">
+  <section id="services" class="mob-pad" style="background-color:#F5F0E8;padding:6.5rem 2.75rem;">
     <div style="max-width:1100px;margin:0 auto;">
 
       <div style="margin-bottom:3.5rem;">
@@ -344,7 +367,7 @@
   </section>
 
   <!-- ── WHAT WE TREAT ────────────────────────────────────────────────────── -->
-  <section style="background-color:#EDE7D9;padding:6.5rem 2.75rem;">
+  <section class="mob-pad" style="background-color:#EDE7D9;padding:6.5rem 2.75rem;">
     <div style="max-width:1100px;margin:0 auto;">
 
       <div style="margin-bottom:3.5rem;">
@@ -352,7 +375,7 @@
         <h2 class="section-h2" style="font-size:clamp(1.9rem,2.8vw,2.6rem);max-width:420px;">What we treat</h2>
       </div>
 
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid #DDD8CE;">
+      <div class="treat-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid #DDD8CE;">
 
         <div style="padding:2rem 2.25rem;border-right:1px solid #DDD8CE;border-bottom:1px solid #DDD8CE;">
           <div style="width:28px;height:1.5px;background:#4B5535;margin-bottom:1.1rem;"></div>
@@ -385,7 +408,7 @@
   </section>
 
   <!-- ── WHY TRUEFORM ──────────────────────────────────────────────────────── -->
-  <section style="background-color:#EDE7D9;padding:6rem 2.75rem;">
+  <section class="mob-pad" style="background-color:#EDE7D9;padding:6rem 2.75rem;">
     <div style="max-width:1100px;margin:0 auto;">
       <div style="text-align:center;margin-bottom:4rem;">
         <p class="eyebrow">The TrueForm Difference</p>
@@ -414,8 +437,8 @@
   <!-- ── AREAS SERVED ──────────────────────────────────────────────────────── -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <section id="areas" style="background-color:#F5F0E8;padding:6rem 2.75rem;">
-    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+  <section id="areas" class="mob-pad" style="background-color:#F5F0E8;padding:6rem 2.75rem;">
+    <div class="areas-two-col" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
 
       <!-- Left: list -->
       <div>
@@ -533,7 +556,7 @@
   </style>
 
   <!-- ── ABOUT ─────────────────────────────────────────────────────────────── -->
-  <section id="about" style="background-color:#EDE7D9;padding:4.5rem 2.75rem;">
+  <section id="about" class="mob-pad" style="background-color:#EDE7D9;padding:4.5rem 2.75rem;">
     <div class="about-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:5fr 8fr;gap:5rem;align-items:center;">
 
       <!-- Photo + frame -->
@@ -741,5 +764,11 @@
     }
   </script>
 
+  <script>
+    if (history.scrollRestoration) history.scrollRestoration = 'manual';
+    window.addEventListener('load', function() {
+      if (!window.location.hash) window.scrollTo(0, 0);
+    });
+  </script>
 </body>
 </html>

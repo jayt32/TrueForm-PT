@@ -1,4 +1,7 @@
 node_modules/
+og-card.html
+website_resources/web_version*.PNG
+website_resources/web_version*.png
 temporary screenshots/
 .DS_Store
 .Rhistory
