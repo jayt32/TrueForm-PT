@@ -1,6 +1,6 @@
 # TrueForm Physical Therapy — System Overview
 
-**Last updated:** May 2026  
+**Last updated:** May 2026 — living document, updated with each meaningful change  
 **Purpose:** Full handoff reference for the TrueForm PT website and its backend infrastructure.
 
 ---
@@ -139,18 +139,29 @@ A single-page print/referral flyer designed to be printed on standard 8.5×11 le
 | `email` | text NOT NULL | Max 320 chars |
 | `phone` | text | Optional, max 30 chars |
 | `message` | text NOT NULL | Max 5,000 chars |
+| `ip_address` | text | Submitter's IP, used for rate limiting |
 | `created_at` | timestamptz | Auto-set on insert |
+
+An index on `(ip_address, created_at)` exists to make rate limit lookups fast.
 
 **To view submissions:** Supabase dashboard → Table Editor → contact_submissions
 
 ### Edge Function — `notify-inquiry`
 
-A serverless Deno function (deployed at version 3) that:
+A serverless Deno function (deployed at version 4) that:
 1. Receives the form POST from the browser
-2. Validates the payload
-3. Inserts the row into `contact_submissions` using the service role key (bypasses RLS)
-4. Calls Resend to send an email notification to Alisha
-5. Returns `{ success: true }` — even if the email fails, the DB save is treated as the source of truth
+2. **Checks the honeypot field** — if populated, silently discards the submission (bot traffic)
+3. Validates required fields (name, email, message)
+4. **Checks IP rate limit** — rejects with 429 if the same IP has submitted 3+ times in the last hour
+5. Inserts the row into `contact_submissions` (including IP address) using the service role key
+6. Calls Resend to send an email notification to Alisha
+7. Returns `{ success: true }` — even if the email fails, the DB save is treated as the source of truth
+
+**Rate limit constants** (top of `index.ts`, easy to adjust):
+```ts
+const RATE_LIMIT_MAX = 3;               // max submissions allowed per window
+const RATE_LIMIT_WINDOW_MS = 60 * 60 * 1000;  // rolling 1-hour window
+```
 
 **Runtime:** Deno (Supabase Edge Functions use Deno, not Node.js)  
 **JWT verification:** Disabled (`verify_jwt: false`) — this is a public form endpoint  
@@ -192,6 +203,12 @@ Database-level constraints prevent oversized payloads:
 - Email: 3–320 characters
 - Phone: up to 30 characters
 - Message: 1–5,000 characters
+
+**Honeypot spam protection**  
+The contact form contains a hidden `website` field invisible to real users but auto-filled by bots. The edge function silently discards any submission where this field is populated, returning a fake success so bots don't retry.
+
+**IP rate limiting**  
+The edge function checks the `contact_submissions` table for recent submissions from the same IP before saving. If the same IP submits 3 or more times within a rolling 1-hour window, the request is rejected with HTTP 429. The limit resets automatically as submissions age out of the window.
 
 **No sensitive data stored**  
 The table only holds voluntary contact form submissions. No passwords, payment info, or user accounts exist.
@@ -272,6 +289,5 @@ http://192.168.1.104:3000
 
 - **No booking system** — the contact form sends an email inquiry only; scheduling is handled manually by Alisha
 - **No CMS** — content changes require editing `index.html` directly and pushing to GitHub
-- **Rate limiting** — the edge function has no rate limiting implemented; for a higher-traffic site this should be added (e.g. via Supabase's built-in rate limiting or an API gateway)
-- **No spam filtering** — no CAPTCHA or honeypot on the contact form; could be added if spam becomes an issue
+- **CAPTCHA** — honeypot + IP rate limiting are in place; a CAPTCHA (e.g. hCaptcha) could be added if spam volume increases despite these measures
 - **Flyer is HTML only** — `flyer.html` is designed to be printed from the browser or screenshotted; it is not automatically generated as a PDF
